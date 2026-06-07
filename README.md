@@ -3,13 +3,14 @@
 <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-blue?style=flat-square" alt="Platform"/>
 <img src="https://img.shields.io/badge/Version-1.0-green?style=flat-square" alt="Version"/>
 [![Discord](https://img.shields.io/badge/Discord-Join-7289DA?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/n2nstVwspk)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white)](https://ko-fi.com/captainapolloo)
 
 # ASTO-BOT
 ### AI Streamer Twitch Orchestrator
 
 **ASTO-BOT** is an all-in-one Twitch stream management tool for Windows. It connects directly to Twitch, OBS Studio, and AI services, letting you automate your stream without writing a single line of code — but also giving you a full scripting language if you want to go further.
 
-[Download](#installation) · [Discord](https://discord.gg/n2nstVwspk) · [User Manual](ASTO-BOT_User_Manual.docx)
+[Download](#installation) · [Discord](https://discord.gg/n2nstVwspk) · [Support on Ko-fi](https://ko-fi.com/captainapolloo) · [User Manual](ASTO-BOT_User_Manual.docx)
 
 </div>
 
@@ -150,6 +151,8 @@ Use **Settings → Backup** to create a full backup archive at any time.
 ## Support
 
 Join the Discord server for help, feature requests and updates: **[discord.gg/n2nstVwspk](https://discord.gg/n2nstVwspk)**
+
+If you enjoy ASTO-BOT and want to support the development: **[ko-fi.com/captainapolloo](https://ko-fi.com/captainapolloo)** ☕
 
 ---
 
