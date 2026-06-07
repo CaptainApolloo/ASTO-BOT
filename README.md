@@ -1,9 +1,8 @@
-[README.md](https://github.com/user-attachments/files/28685487/README.md)
 <div align="center">
 
 <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-blue?style=flat-square" alt="Platform"/>
 <img src="https://img.shields.io/badge/Version-1.0-green?style=flat-square" alt="Version"/>
-<img src="https://img.shields.io/badge/Discord-Join-7289DA?style=flat-square&logo=discord&logoColor=white" alt="Discord"/>
+[![Discord](https://img.shields.io/badge/Discord-Join-7289DA?style=flat-square&logo=discord&logoColor=white)](https://discord.gg/n2nstVwspk)
 
 # ASTO-BOT
 ### AI Streamer Twitch Orchestrator
@@ -150,7 +149,7 @@ Use **Settings → Backup** to create a full backup archive at any time.
 
 ## Support
 
-Join the Discord server for help, feature requests and updates: **[discord.gg/9mfKX4XS](https://discord.gg/n2nstVwspk)**
+Join the Discord server for help, feature requests and updates: **[discord.gg/n2nstVwspk](https://discord.gg/n2nstVwspk)**
 
 ---
 
