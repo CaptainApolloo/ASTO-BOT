@@ -1,0 +1,14 @@
+ASTO-BOT – AI Streamer Twitch Orchestrator
+Version 1.0 | Python Edition
+
+Copyright (c) 2026 CaptainApolloo. All rights reserved.
+
+This software and its source code are the exclusive intellectual
+property of CaptainApolloo. Unauthorized copying, modification,
+reverse engineering, decompilation, or resale of this software
+— in whole or in part — is strictly prohibited without explicit
+written permission from the author.
+
+This software is provided "as is" without warranty of any kind.
+The author is not liable for any damages arising from its use.
+Redistribution in its original, unmodified form is permitted.
