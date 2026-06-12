@@ -6,6 +6,7 @@
 <a href="https://ko-fi.com/captainapolloo"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white" alt="Ko-fi"/></a>
 
 # ASTO-BOT
+
 ### AI Streamer Twitch Orchestrator
 
 **ASTO-BOT** is an all-in-one Twitch stream management tool for Windows. It connects directly to Twitch, OBS Studio, and AI services, letting you automate your stream without writing a single line of code — but also giving you a full scripting language if you want to go further.
@@ -14,7 +15,7 @@
 
 </div>
 
----
+-----
 
 ## Features
 
@@ -29,44 +30,51 @@
 - **Channel Point Rewards** — create, edit and link rewards directly from ASTO-BOT (required for refund support)
 - **Chat Commands** — configurable commands with permission levels, cooldowns and group management
 
----
+-----
 
 ## Screenshots
 
 ### Dashboard
+
 ![Dashboard](screenshot_dashboard.png)
 
 ### Events & Actions
+
 ![Events](screenshot_events.png)
 ![Configured Event](screenshot_event_configured.png)
 ![Action Picker](screenshot_action_picker.png)
 
 ### ASTOSCRIPT
+
 ![Scripts](screenshot_scripts.png)
 
 ### Clips
+
 ![Clips](screenshot_clips.png)
 
 ### Overlay Editor
+
 ![Overlay Editor](screenshot_overlay.png)
 
 ### Giveaway & Points
+
 ![Giveaway](screenshot_giveaway.png)
 
 ### Photo Mode
+
 ![Photo Mode](screenshot_photomode.png)
 
----
+-----
 
 ## Installation
 
-1. Download `ASTO-BOT.exe` from the [Releases](../../releases) page.
-2. Place the EXE in a dedicated folder, e.g. `C:\Streaming\ASTO-BOT\`
-3. Double-click to launch — all required subfolders are created automatically.
-4. Go to **Settings → Twitch** and connect your Streamer and Bot accounts.
-5. Optionally connect OBS via **Settings → OBS** (WebSocket, default `ws://127.0.0.1:4455`).
+1. Download `ASTO-BOT_Installer.exe` from the [Releases](../../releases) page.
+1. Run the installer and choose an installation folder, e.g. `C:\Program Files\ASTO-BOT\`
+1. Follow the installer instructions — ASTO-BOT starts automatically after installation.
+1. Go to **Settings → Twitch** and connect your Streamer and Bot accounts.
+1. Optionally connect OBS via **Settings → OBS** (WebSocket, default `ws://127.0.0.1:4455`).
 
-> ⚠ Never move the EXE without also moving the **Config**, **Sounds**, **Overlays** and **Prompts** folders next to it.
+> ⚠ To uninstall, use **Control Panel → Programs → Uninstall ASTO-BOT** or the included `uninstall-asto.exe`. Never delete the folder manually.
 
 ### Requirements
 
@@ -74,18 +82,21 @@
 - Internet connection (for Twitch authentication and AI features)
 - OBS Studio 28 or later *(optional, for overlay and scene automation)*
 
----
+-----
 
 ## Quick Start
 
 ### 1. Connect your accounts
+
 Open **Settings → Twitch**, click **Connect** next to *Streamer*, log in, then repeat for *Bot*.
-Open **Settings → AI**, enter your Gemini or ChatGPT API key and configure your bot's personality.
+Open **Settings → AI**, enter your Gemini or ChatGPT API key and configure your bot’s personality.
 
 ### 2. Create your first Event
+
 Go to **Events**, click **+ Add Event**, select a trigger (e.g. *Follow*), then click **+ Action** to add what should happen — a chat message, a sound, an overlay, an OBS scene change, or anything else.
 
 ### 3. Write a Script (optional)
+
 Go to **Scripts**, create a new script, and write ASTOSCRIPT. Click **Tutorial** to open the built-in reference, or use **Copy AI Prompt** to let an AI write the script for you.
 
 ```
@@ -96,26 +107,26 @@ WAIT 2
 OBS SCENE "Sub Cam"
 ```
 
----
+-----
 
 ## ASTOSCRIPT — Key Commands
 
-| Command | Description |
-|---|---|
-| `CHAT "text"` | Send a message to Twitch chat |
-| `WAIT 5` | Wait 5 seconds (`WAIT 500 MS` for milliseconds) |
-| `OBS SCENE "name"` | Switch OBS scene |
-| `SOUND "file.mp3" VOLUME 80` | Play a sound |
-| `POINTS ADD %UserName% 50` | Award points to a viewer |
-| `IF / ELSE / END` | Conditional logic |
-| `WHILE / END` | Loop (max 100,000 iterations) |
-| `HTTP GET "url"` | Make an HTTP request |
-| `SET $var = value` | Set a variable |
-| `STOP` | Terminate the script |
+|Command                     |Description                                    |
+|----------------------------|-----------------------------------------------|
+|`CHAT "text"`               |Send a message to Twitch chat                  |
+|`WAIT 5`                    |Wait 5 seconds (`WAIT 500 MS` for milliseconds)|
+|`OBS SCENE "name"`          |Switch OBS scene                               |
+|`SOUND "file.mp3" VOLUME 80`|Play a sound                                   |
+|`POINTS ADD %UserName% 50`  |Award points to a viewer                       |
+|`IF / ELSE / END`           |Conditional logic                              |
+|`WHILE / END`               |Loop (max 100,000 iterations)                  |
+|`HTTP GET "url"`            |Make an HTTP request                           |
+|`SET $var = value`          |Set a variable                                 |
+|`STOP`                      |Terminate the script                           |
 
-All built-in event variables (`%UserName%`, `%OBSScene%`, `%IsSubscriber%`, ...) are available in scripts, events, and overlays.
+All built-in event variables (`%UserName%`, `%OBSScene%`, `%IsSubscriber%`, …) are available in scripts, events, and overlays.
 
----
+-----
 
 ## WebSocket Integration
 
@@ -130,23 +141,23 @@ ASTO-BOT listens on `ws://127.0.0.1:2519` (local only). Send JSON to control it 
 { "photo": "start", "user": "username" }
 ```
 
----
+-----
 
 ## Data & Privacy
 
-ASTO-BOT runs entirely locally. All configuration files live next to the EXE:
+ASTO-BOT runs entirely locally. All configuration files live in the installation folder:
 
-| Path | Contents |
-|---|---|
-| `Config/asto_secure.bin` | Tokens & passwords (encrypted) |
-| `Config/` | All other settings |
-| `Scripts/` | Your ASTOSCRIPT files |
-| `Overlays/` | Overlay definitions |
-| `Sounds/` | Audio files |
+|Path                    |Contents                      |
+|------------------------|------------------------------|
+|`Config/asto_secure.bin`|Tokens & passwords (encrypted)|
+|`Config/`               |All other settings            |
+|`Scripts/`              |Your ASTOSCRIPT files         |
+|`Overlays/`             |Overlay definitions           |
+|`Sounds/`               |Audio files                   |
 
 Use **Settings → Backup** to create a full backup archive at any time.
 
----
+-----
 
 ## Support
 
@@ -154,7 +165,7 @@ Join the Discord server for help, feature requests and updates: **[discord.gg/n2
 
 If you enjoy ASTO-BOT and want to support the development: **[ko-fi.com/captainapolloo](https://ko-fi.com/captainapolloo)** ☕
 
----
+-----
 
 <div align="center">
 <sub>Developed by CaptainApolloo · Version 1.0 · 2026 · All rights reserved</sub>
