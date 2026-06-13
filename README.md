@@ -168,5 +168,5 @@ If you enjoy ASTO-BOT and want to support the development: **[ko-fi.com/captaina
 -----
 
 <div align="center">
-<sub>Developed by CaptainApolloo · Version 1.0.1 · 2026 · All rights reserved</sub>
+<sub>Developed by CaptainApolloo · Version 1.0.2 · 2026 · All rights reserved</sub>
 </div>
