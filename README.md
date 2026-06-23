@@ -1,7 +1,7 @@
 <div align="center">
   
 <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-blue?style=flat-square" alt="Platform"/>
-<a href="../../releases"><img src="https://img.shields.io/badge/Version-1.0.15-green?style=flat-square" alt="Version"/></a>
+<a href="../../releases"><img src="https://img.shields.io/badge/Version-1.0.16-green?style=flat-square" alt="Version"/></a>
 <a href="https://discord.gg/n2nstVwspk"><img src="https://img.shields.io/badge/Discord-Join-7289DA?style=flat-square&logo=discord&logoColor=white" alt="Discord"/></a>
 <a href="https://ko-fi.com/captainapolloo"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white" alt="Ko-fi"/></a>
 
@@ -168,5 +168,5 @@ If you enjoy ASTO-BOT and want to support the development: **[ko-fi.com/captaina
 -----
 
 <div align="center">
-<sub>Developed by CaptainApolloo · Version 1.0.15 · 2026 · All rights reserved</sub>
+<sub>Developed by CaptainApolloo · Version 1.0.16 · 2026 · All rights reserved</sub>
 </div>
