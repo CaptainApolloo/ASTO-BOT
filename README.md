@@ -24,12 +24,13 @@
 - **OBS Integration** — switch scenes, show/hide sources, set GDI text and browser URLs, rotate scenes, take screenshots and save the replay buffer
 - **ASTOSCRIPT** — built-in scripting language with variables, conditions, loops, lists, file access, HTTP requests and OBS control, plus a live debugger and an AI prompt generator
 - **Visual Overlay Editor** — build animated overlays (images + text) for OBS Browser Source or Window Capture, with per-step sounds and multiple timelines
+- **Browser Overlay** — a transparent, click-through desktop window for web-based overlays, controlled live via script, event or WebSocket
 - **Clip Manager** — browse, label and play Twitch clips via clip lists, playlist or chat command
 - **Giveaway & Points System** — viewers earn custom points over time and spend them to enter giveaways (ticket draw or highest-bid mode)
 - **Photo Mode** — live group photo sessions where viewers join via chat command and appear on stream
 - **Moderation & Chat Modes** — ban, timeout, VIP, warnings, shield mode, followers-only, emote-only, sub-only, slow and unique chat, all as event actions
 - **Now Playing** — reads what is playing in Spotify, Apple Music or a browser and controls the player from an event
-- **Stream Deck & WebSocket** — trigger events, scripts, overlays, clips and photo mode from any external tool on port 2519
+- **Stream Deck & WebSocket** — trigger events, scripts, overlays, clips, the browser overlay and photo mode from any external tool on port 2519
 - **Channel Point Rewards** — create, edit and link rewards directly from ASTO-BOT (required for refund support)
 - **Chat Commands** — configurable commands with permission levels, cooldowns and group management
 
@@ -125,6 +126,7 @@ OBS SHOW "Main" "Sub Cam"
 |`WAIT 5`                         |Wait 5 seconds (`WAIT 500 MS` for milliseconds)   |
 |`SOUND "file.mp3" VOLUME 80`     |Play a sound                                      |
 |`OBS SHOW "scene" "source"`      |Show a source (`OBS HIDE` hides it again)         |
+|`BROWSER ON / OFF / URL / VOLUME`|Control the browser overlay                       |
 |`IF / ELSE / END`                |Conditional logic                                 |
 |`WHILE / END`                    |Loop while a condition holds                      |
 |`REPEAT 5 / END`                 |Loop a fixed number of times                      |
@@ -147,7 +149,7 @@ The **complete command reference** lives in the built-in tutorial: **Scripts →
 
 ## WebSocket Integration
 
-ASTO-BOT listens on `ws://127.0.0.1:2519` (local only). Send JSON to control it from any tool, including the Elgato Stream Deck (*Web Requests* plugin):
+ASTO-BOT listens on `ws://127.0.0.1:2519` (local only — not reachable from the network). Send JSON to control it from any tool, including the Elgato Stream Deck (*Web Requests* plugin):
 
 ```json
 // Scripts & Events
@@ -169,11 +171,21 @@ ASTO-BOT listens on `ws://127.0.0.1:2519` (local only). Send JSON to control it 
 { "queue": "play", "name": "Default" }
 { "queue": "stop", "name": "Default" }
 { "queue": "reset", "name": "Default" }
-{ "queue": "reset" }
-{ "ping": true }
+{ "queue": "reset" }                         // resets ALL queues
 
 // Overlay
 { "overlay": "overlay_name" }
+
+// Browser Overlay
+{ "browser": "on" }
+{ "browser": "off" }
+{ "browser": "toggle" }
+{ "browser": "reload" }
+{ "browser": "interact_on" }                 // overlay catches clicks
+{ "browser": "interact_off" }                // clicks pass through again
+{ "browser": "interact_toggle" }
+{ "browser": "url", "name": "sticker" }      // from the saved URL collection
+{ "browser": "url", "url": "https://…" }
 
 // Photo Mode
 { "photo": "start", "user": "username" }
@@ -186,9 +198,17 @@ ASTO-BOT listens on `ws://127.0.0.1:2519` (local only). Send JSON to control it 
 { "photo": "select" }
 { "photo": "skip" }
 { "photo": "finish" }
+
+// Other
+{ "ping": true }                             // answers { "pong": true }
+{ "game_result": { "key": "aale_roll", "value": 4 } }
 ```
 
-> For events, use the **event ID** (shown under the event name), not the display name. For everything else, the **name** is used.
+Every message is answered exactly once and in order — `{ "ok": true }` when it was accepted, or `{ "ok": false, "error": "…" }` with a reason when it was not.
+
+> For events, use the **signal name** (shown under the event name), not the display name or the chat trigger. Upper/lower case does not matter, and events without a trigger work fine. For everything else, the **name** is used.
+
+The port can be changed under **Settings → Websocket**, where this list is also available with click-to-copy.
 
 -----
 
