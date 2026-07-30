@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="pi.css" />
+</head>
+<body>
+  <div class="section">Command</div>
+
+  <div class="sdpi-item">
+    <div class="sdpi-item-label">Action</div>
+    <select class="sdpi-item-value" id="cmdSelect"></select>
+  </div>
+
+  <!-- Input fields are generated from the selected command's definition. -->
+  <div id="argBox"></div>
+  <div class="hint" id="cmdHint"></div>
+
+  <div class="section">Connection</div>
+  <div id="connBox"></div>
+
+  <script src="../js/commands.js"></script>
+  <script src="../js/pi-common.js"></script>
+  <script>
+    'use strict';
+
+    const sel = document.getElementById('cmdSelect');
+    const argBox = document.getElementById('argBox');
+    const hint = document.getElementById('cmdHint');
+
+    // Build the dropdown, grouped exactly like the catalogue.
+    (function buildDropdown() {
+      let currentGroup = null;
+      let optgroup = null;
+      ASTO_COMMANDS.forEach(function (c) {
+        if (c.group !== currentGroup) {
+          currentGroup = c.group;
+          optgroup = document.createElement('optgroup');
+          optgroup.label = c.group;
+          sel.appendChild(optgroup);
+        }
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = c.label;
+        optgroup.appendChild(opt);
+      });
+    })();
+
+    function renderArgs() {
+      const def = astoFindCommand(sel.value);
+      argBox.innerHTML = '';
+      hint.textContent = '';
+
+      if (!def) return;
+
+      (def.args || []).forEach(function (a) {
+        const row = document.createElement('div');
+        row.className = 'sdpi-item';
+
+        const label = document.createElement('div');
+        label.className = 'sdpi-item-label';
+        label.textContent = a.label;
+
+        const input = document.createElement('input');
+        input.className = 'sdpi-item-value';
+        input.type = 'text';
+        input.placeholder = a.placeholder || '';
+        input.value = piSettings['arg_' + a.key] || '';
+        input.addEventListener('change', function () {
+          piSettings['arg_' + a.key] = input.value;
+          saveSettings();
+        });
+
+        row.appendChild(label);
+        row.appendChild(input);
+
+        // Auswahlliste aus ASTO-BOT, wo es eine gibt — steht ueber dem Feld,
+        // weil man erst waehlt und dann sieht, was drin steht.
+        if (a.list) {
+          argBox.appendChild(createListPicker(a.list, input));
+        }
+        argBox.appendChild(row);
+      });
+
+      if (def.id === 'event') {
+        hint.innerHTML = 'Use the <b>event / signal name</b>, not the chat trigger. ' +
+                         'Events without a trigger work fine.';
+      } else if (def.id === 'queue_reset') {
+        hint.textContent = 'Leave the name empty to reset every queue at once.';
+      } else if (def.id === 'raw') {
+        hint.innerHTML = 'Sent verbatim, e.g. <code>{"script":"my_script"}</code>. ' +
+                         'Lets you use new server commands before the plugin knows them.';
+      } else if (def.id === 'overlay_play') {
+        hint.textContent = 'The overlay name as it appears in the Overlay dropdown.';
+      }
+    }
+
+    sel.addEventListener('change', function () {
+      piSettings.command = sel.value;
+      saveSettings();
+      renderArgs();
+    });
+
+    onSettingsReady = function () {
+      // Eine frisch platzierte Taste hat noch keine Einstellungen. Die
+      // Vorauswahl wird deshalb gleich mitgespeichert — sonst zeigt das
+      // Dropdown etwas an, was beim Tastendruck noch gar nicht hinterlegt ist.
+      if (!piSettings.command) {
+        piSettings.command = ASTO_COMMANDS[0].id;
+        saveSettings();
+      }
+      sel.value = piSettings.command;
+      if (!sel.value) sel.selectedIndex = 0;
+      renderArgs();
+    };
+
+    renderConnectionBlock();
+  </script>
+</body>
+</html>

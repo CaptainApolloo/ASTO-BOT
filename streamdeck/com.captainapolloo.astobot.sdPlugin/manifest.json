@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "UUID": "com.captainapolloo.astobot",
+  "SDKVersion": 3,
+  "Name": "ASTO-BOT",
+  "Version": "1.1.0.0",
+  "Author": "CaptainApolloo",
+  "Description": "Control ASTO-BOT from your Stream Deck: run scripts, trigger events, control clips, queues, overlays, the browser overlay and photo mode. Scripts, events, overlays and queues are read live from ASTO-BOT, so you pick them from a list instead of typing names.",
+  "Category": "ASTO-BOT",
+  "CategoryIcon": "icons/category",
+  "Icon": "icons/plugin",
+  "URL": "https://www.twitch.tv/CaptainApolloo",
+  "CodePath": "plugin.html",
+  "Software": {
+    "MinimumVersion": "6.9"
+  },
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Actions": [
+    {
+      "UUID": "com.captainapolloo.astobot.command",
+      "Name": "Command",
+      "Icon": "icons/command",
+      "Tooltip": "Send any ASTO-BOT command — pick it from the list.",
+      "PropertyInspectorPath": "pi/command.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "icons/command_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "UUID": "com.captainapolloo.astobot.script",
+      "Name": "Run Script",
+      "Icon": "icons/script",
+      "Tooltip": "Run an ASTO-BOT script by name.",
+      "PropertyInspectorPath": "pi/script.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "icons/script_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "UUID": "com.captainapolloo.astobot.event",
+      "Name": "Trigger Event",
+      "Icon": "icons/event",
+      "Tooltip": "Trigger an ASTO-BOT event by its event/signal name.",
+      "PropertyInspectorPath": "pi/event.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "icons/event_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "UUID": "com.captainapolloo.astobot.status",
+      "Name": "Connection",
+      "Icon": "icons/status",
+      "Tooltip": "Shows whether ASTO-BOT is reachable. Press to ping.",
+      "PropertyInspectorPath": "pi/status.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "States": [
+        {
+          "Image": "icons/status_off_key",
+          "TitleAlignment": "bottom"
+        },
+        {
+          "Image": "icons/status_on_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    }
+  ]
+}
