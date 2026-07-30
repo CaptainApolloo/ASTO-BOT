@@ -40,31 +40,51 @@
 
 ### Dashboard
 
+Everything at a glance: connection status for Twitch and OBS, what is running right now, and the live chat next to it.
+
 ![Dashboard](screenshot_dashboard.png)
 
 ### Events & Actions
 
+An event is a trigger plus a list of actions. Pick what should set it off — a follow, a raid, a channel point reward, a chat command — and ASTO-BOT does the rest.
+
 ![Events](screenshot_events.png)
+
+Actions run top to bottom. Send a chat message, play a sound, start an overlay, switch an OBS scene, run a script — combine as many as you like, with permissions and cooldowns per event.
+
 ![Configured Event](screenshot_event_configured.png)
+
+Over a hundred ready-made actions, sorted by category. No code needed.
+
 ![Action Picker](screenshot_action_picker.png)
 
 ### ASTOSCRIPT
+
+For everything the ready-made actions do not cover: a real scripting language with variables, conditions, loops, file access and HTTP requests. Syntax highlighting, autocomplete and a live debugger are built in — and if you would rather not write it yourself, **Copy AI Prompt** hands the job to an AI.
 
 ![Scripts](screenshot_scripts.png)
 
 ### Clips
 
+Browse your channel's clips, sort them into lists, and play them on stream — manually, as a playlist, or by chat command.
+
 ![Clips](screenshot_clips.png)
 
 ### Overlay Editor
+
+Build animated overlays from images and text: drag them into place, give each element a timeline, add sounds per step. Runs as an OBS browser source or as a transparent window for window capture.
 
 ![Overlay Editor](screenshot_overlay.png)
 
 ### Giveaway & Points
 
+Viewers collect points just by watching and spend them to enter. Draw a random winner, or let the highest bid win.
+
 ![Giveaway](screenshot_giveaway.png)
 
 ### Photo Mode
+
+Viewers join a group photo by chat command and appear on stream together — with backgrounds, text effects and a countdown.
 
 ![Photo Mode](screenshot_photomode.png)
 
