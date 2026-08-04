@@ -38,21 +38,26 @@ any further configuration.
 
 | Action | What it does |
 |---|---|
-| **Command** | All 36 commands in one key, picked from a grouped dropdown |
-| **Run Script** | Start a script by name |
-| **Trigger Event** | Fire an event by its signal name, with optional input |
-| **Connection** | Lights up while ASTO-BOT is reachable. Press to ping |
+| **Command** (C) | All 36 commands in one key, picked from a grouped dropdown |
+| **Run Script** (S) | Start a script by name |
+| **Trigger Event** (E) | Fire an event by its signal name, with optional input |
+| **Reconnect** | Reconnect to ASTO-BOT immediately, or ping to confirm it works |
 
 **Command** alone covers everything. Script and Event exist as shortcuts for
-the two most common cases.
+the two most common cases, and carry a small letter in the corner so they are
+easy to tell apart on the deck.
+
+### Every key shows the connection
+
+All ASTO-BOT keys light up while ASTO-BOT is reachable and turn grey when it is
+not. One glance at the deck tells you whether the app is running.
 
 ### Feedback on the key
 
 * ✅ tick — command accepted
 * ⚠ alert — not connected, a required field is empty, or the server rejected it
 
-If *every* key shows the alert, the websocket in ASTO-BOT is almost certainly
-off. The **Connection** key shows that at a glance.
+If *every* key is grey, the websocket in ASTO-BOT is almost certainly off.
 
 ---
 
@@ -76,6 +81,10 @@ ASTO-BOT versions that do not support the lookup yet — the list simply reads
 Host and port appear in every action but are **shared** — set them once and
 every key follows. They must match Settings → Websocket in ASTO-BOT
 (default port `2519`).
+
+The connection is opened automatically and re-established on its own after a
+drop. The **Reconnect** key forces an immediate attempt, which saves waiting
+when you have just started ASTO-BOT.
 
 ASTO-BOT only listens on `127.0.0.1` and is not reachable from the network, so
 a Stream Deck on a different PC needs a tunnel.
@@ -104,8 +113,7 @@ commands can be used before the plugin knows about them.
 | Symptom | Cause |
 |---|---|
 | Category missing in Stream Deck | Plugin not installed, or Stream Deck needs a restart |
-| Connection stays *offline* | Websocket off in ASTO-BOT, or the port does not match |
-| Every key shows ⚠ | Same as above |
+| All keys stay grey | Websocket off in ASTO-BOT, or the port does not match |
 | One key shows ⚠ | Required field empty, or the name does not exist in ASTO-BOT |
 | Dropdowns stay empty | ASTO-BOT closed, or a version older than vX.X.X |
 
