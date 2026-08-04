@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="pi.css" />
+</head>
+<body>
+  <div class="section">Event</div>
+
+  <div id="pickBox"></div>
+
+  <div class="sdpi-item">
+    <div class="sdpi-item-label">Event name</div>
+    <input class="sdpi-item-value" id="fName" type="text" placeholder="greeting">
+  </div>
+  <div class="sdpi-item">
+    <div class="sdpi-item-label">Input</div>
+    <input class="sdpi-item-value" id="fInput" type="text" placeholder="optional">
+  </div>
+  <div class="hint">
+    The list shows the <b>event / signal names</b> from ASTO-BOT — not chat
+    triggers. Events without a trigger work fine. Upper/lower case is ignored.
+  </div>
+
+  <div class="section">Connection</div>
+  <div id="connBox"></div>
+
+  <script src="../js/pi-common.js"></script>
+  <script>
+    'use strict';
+    const fn = document.getElementById('fName');
+    const fi = document.getElementById('fInput');
+    bindField(fn, function (v) { piSettings.name = v; });
+    bindField(fi, function (v) { piSettings.input = v; });
+    onSettingsReady = function () {
+      fn.value = piSettings.name || '';
+      fi.value = piSettings.input || '';
+    };
+    renderConnectionBlock();
+    document.getElementById('pickBox').appendChild(createListPicker('events', fn));
+  </script>
+</body>
+</html>
