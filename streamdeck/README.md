@@ -72,7 +72,7 @@ a key can still be set up while ASTO-BOT is closed, and nothing breaks on older
 ASTO-BOT versions that do not support the lookup yet — the list simply reads
 *not available*.
 
-> Dropdowns require ASTO-BOT **vX.X.X** or newer.
+> Dropdowns require ASTO-BOT **v1.0.42** or newer.
 
 ---
 
