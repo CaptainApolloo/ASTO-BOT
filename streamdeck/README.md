@@ -67,12 +67,16 @@ Scripts, events, overlays, queues and saved browser URLs appear as a dropdown �
 no typing, no typos. The list is fetched fresh each time you open a key, so
 newly created scripts and events show up right away.
 
+The list reloads by itself whenever the Stream Deck window regains focus, so
+switching to ASTO-BOT, creating a script and coming back is enough — the new
+entry is already there. The ↻ button next to the list reloads it on demand.
+
 The text field next to it stays editable and is the value that counts. That way
 a key can still be set up while ASTO-BOT is closed, and nothing breaks on older
 ASTO-BOT versions that do not support the lookup yet — the list simply reads
 *not available*.
 
-> Dropdowns require ASTO-BOT **v1.0.42** or newer.
+> Dropdowns require ASTO-BOT **vX.X.X** or newer.
 
 ---
 
@@ -115,7 +119,7 @@ commands can be used before the plugin knows about them.
 | Category missing in Stream Deck | Plugin not installed, or Stream Deck needs a restart |
 | All keys stay grey | Websocket off in ASTO-BOT, or the port does not match |
 | One key shows ⚠ | Required field empty, or the name does not exist in ASTO-BOT |
-| Dropdowns stay empty | ASTO-BOT closed, or a version older than vX.X.X |
+| Dropdowns stay empty | ASTO-BOT closed, or a version older than v1.0.42 |
 
 The plugin writes messages prefixed `[ASTO-BOT]` to the Stream Deck logs in
 `%APPDATA%\Elgato\StreamDeck\logs\`.
