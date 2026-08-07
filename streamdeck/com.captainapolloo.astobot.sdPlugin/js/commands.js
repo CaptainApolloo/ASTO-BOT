@@ -120,6 +120,44 @@ const ASTO_COMMANDS = [
   { id: 'photo_skip',       group: 'Photo Mode', label: 'Photo: skip',            build: () => ({ photo: 'skip' }) },
   { id: 'photo_finish',     group: 'Photo Mode', label: 'Photo: finish',          build: () => ({ photo: 'finish' }) },
 
+  // ── Dashboard ─────────────────────────────────────────────────────────
+  { id: 'dash_1',    group: 'Dashboard', label: 'Dashboard 1', build: () => ({ dashboard: 1 }) },
+  { id: 'dash_2',    group: 'Dashboard', label: 'Dashboard 2', build: () => ({ dashboard: 2 }) },
+  { id: 'dash_3',    group: 'Dashboard', label: 'Dashboard 3', build: () => ({ dashboard: 3 }) },
+  { id: 'dash_4',    group: 'Dashboard', label: 'Dashboard 4', build: () => ({ dashboard: 4 }) },
+  { id: 'dash_next', group: 'Dashboard', label: 'Dashboard: next', build: () => ({ dashboard: 'next' }) },
+  { id: 'dash_prev', group: 'Dashboard', label: 'Dashboard: previous', build: () => ({ dashboard: 'prev' }) },
+
+  // ── Live Translator ───────────────────────────────────────────────────
+  { id: 'tr_on',     group: 'Translator', label: 'Translator: ON',     build: () => ({ translator: 'on' }) },
+  { id: 'tr_off',    group: 'Translator', label: 'Translator: OFF',    build: () => ({ translator: 'off' }) },
+  { id: 'tr_toggle', group: 'Translator', label: 'Translator: toggle', build: () => ({ translator: 'toggle' }) },
+
+  // Ausgänge — schalten nur, OB Zeilen gesendet werden. Die Übersetzung
+  // selbst läuft davon unberührt weiter.
+  { id: 'out_sub_on',     group: 'Translator', label: 'Output subtitles: ON',     build: () => ({ output: 'subtitles', action: 'on' }) },
+  { id: 'out_sub_off',    group: 'Translator', label: 'Output subtitles: OFF',    build: () => ({ output: 'subtitles', action: 'off' }) },
+  { id: 'out_sub_toggle', group: 'Translator', label: 'Output subtitles: toggle', build: () => ({ output: 'subtitles', action: 'toggle' }) },
+  { id: 'out_gdi_on',     group: 'Translator', label: 'Output GDI: ON',           build: () => ({ output: 'gdi', action: 'on' }) },
+  { id: 'out_gdi_off',    group: 'Translator', label: 'Output GDI: OFF',          build: () => ({ output: 'gdi', action: 'off' }) },
+  { id: 'out_gdi_toggle', group: 'Translator', label: 'Output GDI: toggle',       build: () => ({ output: 'gdi', action: 'toggle' }) },
+  { id: 'out_chat_on',     group: 'Translator', label: 'Output chat: ON',         build: () => ({ output: 'chat', action: 'on' }) },
+  { id: 'out_chat_off',    group: 'Translator', label: 'Output chat: OFF',        build: () => ({ output: 'chat', action: 'off' }) },
+  { id: 'out_chat_toggle', group: 'Translator', label: 'Output chat: toggle',     build: () => ({ output: 'chat', action: 'toggle' }) },
+
+  // Fenster auf dem Bildschirm — nicht zu verwechseln mit dem Ausgang oben.
+  { id: 'subs_on',     group: 'Translator', label: 'Subtitle window: ON',     build: () => ({ subtitles: 'on' }) },
+  { id: 'subs_off',    group: 'Translator', label: 'Subtitle window: OFF',    build: () => ({ subtitles: 'off' }) },
+  { id: 'subs_toggle', group: 'Translator', label: 'Subtitle window: toggle', build: () => ({ subtitles: 'toggle' }) },
+
+  { id: 'model_release', group: 'Translator', label: 'Release speech model', build: () => ({ model: 'release' }) },
+
+  // ── Voice / Push-to-Talk ──────────────────────────────────────────────
+  { id: 'ptt_start',     group: 'Voice', label: 'Push-to-Talk: start',           build: () => ({ ptt: 'start' }) },
+  { id: 'ptt_stop',      group: 'Voice', label: 'Push-to-Talk: stop',            build: () => ({ ptt: 'stop' }) },
+  { id: 'ptt_cmd_start', group: 'Voice', label: 'Push-to-Talk: start (command)', build: () => ({ ptt: 'start', mode: 'command' }) },
+  { id: 'ptt_cmd_stop',  group: 'Voice', label: 'Push-to-Talk: stop (command)',  build: () => ({ ptt: 'stop', mode: 'command' }) },
+
   // ── Misc ──────────────────────────────────────────────────────────────
   {
     id: 'game_result',

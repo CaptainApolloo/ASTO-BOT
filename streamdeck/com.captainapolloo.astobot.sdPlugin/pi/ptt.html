@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="pi.css" />
+</head>
+<body>
+  <div class="section">Push to Talk</div>
+
+  <div class="sdpi-item">
+    <div class="sdpi-item-label">Mode</div>
+    <select class="sdpi-item-value" id="fMode">
+      <option value="">Normal</option>
+      <option value="command">Command</option>
+    </select>
+  </div>
+  <div class="hint">
+    <b>Hold the key</b> to talk: voice input starts when you press it down and
+    stops the moment you let go — just like a real push-to-talk button.<br><br>
+    <b>Command</b> mode sends the recognised text as an ASTO-BOT command
+    instead of normal voice input.
+  </div>
+
+  <div class="section">Connection</div>
+  <div id="connBox"></div>
+
+  <script src="../js/pi-common.js"></script>
+  <script>
+    'use strict';
+    const f = document.getElementById('fMode');
+    f.addEventListener('change', function () {
+      piSettings.mode = f.value;
+      saveSettings();
+    });
+    onSettingsReady = function () { f.value = piSettings.mode || ''; };
+    renderConnectionBlock();
+  </script>
+</body>
+</html>

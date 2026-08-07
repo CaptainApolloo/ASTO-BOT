@@ -3,7 +3,7 @@
   "UUID": "com.captainapolloo.astobot",
   "SDKVersion": 3,
   "Name": "ASTO-BOT",
-  "Version": "1.1.0.0",
+  "Version": "1.2.0.0",
   "Author": "CaptainApolloo",
   "Description": "Control ASTO-BOT from your Stream Deck: run scripts, trigger events, control clips, queues, overlays, the browser overlay and photo mode. Scripts, events, overlays and queues are read live from ASTO-BOT, so you pick them from a list instead of typing names.",
   "Category": "ASTO-BOT",
@@ -83,6 +83,48 @@
         }
       ],
       "DisableAutomaticStates": true
+    },
+    {
+      "UUID": "com.captainapolloo.astobot.translator",
+      "Name": "Translator",
+      "Icon": "icons/translator",
+      "Tooltip": "Turn the live translator on, off or toggle it.",
+      "PropertyInspectorPath": "pi/translator.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "icons/translator_key_off",
+          "TitleAlignment": "bottom"
+        },
+        {
+          "Image": "icons/translator_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
+      "UUID": "com.captainapolloo.astobot.ptt",
+      "Name": "Push to Talk",
+      "Icon": "icons/ptt",
+      "Tooltip": "Hold the key to talk — voice input runs while the key is held down.",
+      "PropertyInspectorPath": "pi/ptt.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "icons/ptt_key_off",
+          "TitleAlignment": "bottom"
+        },
+        {
+          "Image": "icons/ptt_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
     },
     {
       "UUID": "com.captainapolloo.astobot.status",

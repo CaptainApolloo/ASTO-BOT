@@ -200,6 +200,15 @@ function payloadForAction(action, settings) {
   if (action.endsWith('.status')) {
     return { ping: true };
   }
+  if (action.endsWith('.translator')) {
+    const mode = (s.mode || 'toggle').trim();
+    return { translator: mode };
+  }
+  // Push-to-Talk wird nicht hier gebaut — der Wert hängt davon ab, ob die
+  // Taste gerade gedrückt oder losgelassen wurde. Siehe pttPayload().
+  if (action.endsWith('.ptt')) {
+    return null;
+  }
 
   // Universal action: look the command up in the shared catalogue.
   const def = astoFindCommand(s.command || '');
@@ -218,6 +227,22 @@ function payloadForAction(action, settings) {
     log('could not build payload: ' + e);   // e.g. malformed raw JSON
     return null;
   }
+}
+
+/**
+ * Push-to-Talk: der Befehl hängt davon ab, ob die Taste gerade heruntergedrückt
+ * oder losgelassen wurde — darum eine eigene Funktion statt payloadForAction().
+ *
+ * So verhält sich die Taste wie eine echte Sprechtaste: Sprachaufnahme läuft,
+ * solange sie gehalten wird, und endet beim Loslassen. Ein Umschalter wäre hier
+ * falsch — wer die Taste versehentlich nur antippt, hätte sonst ein offenes
+ * Mikrofon, ohne es zu merken.
+ */
+function pttPayload(settings, phase) {
+  const body = { ptt: phase };                 // "start" oder "stop"
+  const mode = ((settings || {}).mode || '').trim();
+  if (mode) body.mode = mode;                  // z.B. "command"
+  return body;
 }
 
 // ── Stream Deck entry point (called by the Stream Deck software) ─────────
@@ -240,6 +265,15 @@ function connectElgatoStreamDeckSocket(inPort, inPluginUUID, inRegisterEvent, in
     const action = msg.action || '';
     const payload = msg.payload || {};
 
+    if (event === 'keyDown') {
+      // Nur Push-to-Talk reagiert schon auf das Herunterdrücken. Alle anderen
+      // Aktionen lösen wie gewohnt erst beim Loslassen aus.
+      if (action.endsWith('.ptt')) {
+        astoSend(pttPayload(payload.settings, 'start'), context);
+      }
+      return;
+    }
+
     if (event === 'keyUp') {
       // Reconnect-Taste: Wartezeit zuruecksetzen, damit ein Druck wirklich
       // sofort wirkt. Ohne das bliebe die durch wiederholtes Scheitern
@@ -249,7 +283,10 @@ function connectElgatoStreamDeckSocket(inPort, inPluginUUID, inRegisterEvent, in
       if (action.endsWith('.status')) {
         reconnectDelay = 1000;
       }
-      const body = payloadForAction(action, payload.settings);
+      // Push-to-Talk: Loslassen beendet die Aufnahme.
+      const body = action.endsWith('.ptt')
+        ? pttPayload(payload.settings, 'stop')
+        : payloadForAction(action, payload.settings);
       if (!body) { showAlert(context); return; }
       astoSend(body, context);
       // Zustand nachtraeglich wieder setzen. Stream Deck behandelt Aktionen

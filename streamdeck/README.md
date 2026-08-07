@@ -3,7 +3,7 @@
 Control ASTO-BOT from your Elgato Stream Deck: run scripts, trigger events,
 control clips, queues, overlays, the browser overlay and photo mode.
 
-36 commands, four actions, one WebSocket connection.
+62 commands, six actions, one WebSocket connection.
 
 ---
 
@@ -38,14 +38,20 @@ any further configuration.
 
 | Action | What it does |
 |---|---|
-| **Command** (C) | All 36 commands in one key, picked from a grouped dropdown |
+| **Command** (C) | All 62 commands in one key, picked from a grouped dropdown |
 | **Run Script** (S) | Start a script by name |
 | **Trigger Event** (E) | Fire an event by its signal name, with optional input |
+| **Translator** (T) | Turn the live translator on, off or toggle it |
+| **Push to Talk** (P) | Hold the key to talk — voice input runs while it is held |
 | **Reconnect** | Reconnect to ASTO-BOT immediately, or ping to confirm it works |
 
-**Command** alone covers everything. Script and Event exist as shortcuts for
-the two most common cases, and carry a small letter in the corner so they are
-easy to tell apart on the deck.
+**Command** alone covers everything. The others exist as shortcuts for the most
+common cases and carry a small letter in the corner so they are easy to tell
+apart on the deck.
+
+**Push to Talk** is a real hold-to-talk key: recording starts when you press it
+down and stops the moment you let go, so an accidental tap cannot leave your
+microphone open.
 
 ### Every key shows the connection
 
@@ -100,6 +106,9 @@ a Stream Deck on a different PC needs a tunnel.
 | Group | Commands |
 |---|---|
 | Scripts & Events | Run script · Trigger event (with optional input) |
+| Dashboard | Switch to dashboard 1–4 · next · previous |
+| Translator | Translator on/off/toggle · Output subtitles, GDI and chat each on/off/toggle · Subtitle window on/off/toggle · Release speech model |
+| Voice | Push-to-Talk start/stop, normal or command mode |
 | Clips | Play · Pause · Stop · Replay · Volume ±5 · Playlist start/stop |
 | Queues | Play · Stop · Reset (one queue or all) |
 | Overlay | Play overlay by name |
@@ -119,7 +128,7 @@ commands can be used before the plugin knows about them.
 | Category missing in Stream Deck | Plugin not installed, or Stream Deck needs a restart |
 | All keys stay grey | Websocket off in ASTO-BOT, or the port does not match |
 | One key shows ⚠ | Required field empty, or the name does not exist in ASTO-BOT |
-| Dropdowns stay empty | ASTO-BOT closed, or a version older than vX.X.X |
+| Dropdowns stay empty | ASTO-BOT closed, or a version older than v1.0.42 |
 
 The plugin writes messages prefixed `[ASTO-BOT]` to the Stream Deck logs in
 `%APPDATA%\Elgato\StreamDeck\logs\`.
