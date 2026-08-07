@@ -3,7 +3,7 @@
   "UUID": "com.captainapolloo.astobot",
   "SDKVersion": 3,
   "Name": "ASTO-BOT",
-  "Version": "1.2.0.0",
+  "Version": "1.1.0.0",
   "Author": "CaptainApolloo",
   "Description": "Control ASTO-BOT from your Stream Deck: run scripts, trigger events, control clips, queues, overlays, the browser overlay and photo mode. Scripts, events, overlays and queues are read live from ASTO-BOT, so you pick them from a list instead of typing names.",
   "Category": "ASTO-BOT",

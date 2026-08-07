@@ -12,24 +12,6 @@
 // eslint-disable-next-line no-unused-vars
 const ASTO_COMMANDS = [
   // ── Scripts & Events ──────────────────────────────────────────────────
-  {
-    id: 'script',
-    group: 'Scripts & Events',
-    label: 'Run script',
-    args: [{ key: 'name', label: 'Script name', placeholder: 'my_script', required: true, list: 'scripts' }],
-    build: (a) => ({ script: a.name })
-  },
-  {
-    id: 'event',
-    group: 'Scripts & Events',
-    label: 'Trigger event',
-    // NOTE: this is the EVENT/SIGNAL name, not the chat trigger string.
-    args: [
-      { key: 'name', label: 'Event name', placeholder: 'greeting', required: true, list: 'events' },
-      { key: 'input', label: 'Input (optional)', placeholder: 'username' }
-    ],
-    build: (a) => (a.input ? { event: a.name, input: a.input } : { event: a.name })
-  },
 
   // ── Clip player ───────────────────────────────────────────────────────
   { id: 'clip_play',    group: 'Clips', label: 'Clip: play / resume', build: () => ({ clip: 'play' }) },
@@ -156,31 +138,7 @@ const ASTO_COMMANDS = [
   { id: 'ptt_start',     group: 'Voice', label: 'Push-to-Talk: start',           build: () => ({ ptt: 'start' }) },
   { id: 'ptt_stop',      group: 'Voice', label: 'Push-to-Talk: stop',            build: () => ({ ptt: 'stop' }) },
   { id: 'ptt_cmd_start', group: 'Voice', label: 'Push-to-Talk: start (command)', build: () => ({ ptt: 'start', mode: 'command' }) },
-  { id: 'ptt_cmd_stop',  group: 'Voice', label: 'Push-to-Talk: stop (command)',  build: () => ({ ptt: 'stop', mode: 'command' }) },
-
-  // ── Misc ──────────────────────────────────────────────────────────────
-  {
-    id: 'game_result',
-    group: 'Advanced',
-    label: 'Set script global (game result)',
-    args: [
-      { key: 'key', label: 'Global key', placeholder: 'aale_roll', required: true },
-      { key: 'value', label: 'Value', placeholder: '4', required: true }
-    ],
-    build: (a) => ({ game_result: { key: a.key, value: a.value } })
-  },
-  { id: 'ping', group: 'Advanced', label: 'Ping (connection test)', build: () => ({ ping: true }) },
-
-  // ── Raw escape hatch ──────────────────────────────────────────────────
-  // Anything added to the server later can be used immediately, without
-  // waiting for a plugin update.
-  {
-    id: 'raw',
-    group: 'Advanced',
-    label: 'Raw JSON (advanced)',
-    args: [{ key: 'json', label: 'JSON payload', placeholder: '{"script":"my_script"}', required: true }],
-    build: (a) => JSON.parse(a.json)
-  }
+  { id: 'ptt_cmd_stop',  group: 'Voice', label: 'Push-to-Talk: stop (command)',  build: () => ({ ptt: 'stop', mode: 'command' }) }
 ];
 
 /** Look up a command definition by its id. */

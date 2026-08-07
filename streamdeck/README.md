@@ -3,7 +3,7 @@
 Control ASTO-BOT from your Elgato Stream Deck: run scripts, trigger events,
 control clips, queues, overlays, the browser overlay and photo mode.
 
-62 commands, six actions, one WebSocket connection.
+57 commands, six actions, one WebSocket connection.
 
 ---
 
@@ -38,7 +38,7 @@ any further configuration.
 
 | Action | What it does |
 |---|---|
-| **Command** (C) | All 62 commands in one key, picked from a grouped dropdown |
+| **Command** (C) | All 57 commands in one key, picked from a grouped dropdown |
 | **Run Script** (S) | Start a script by name |
 | **Trigger Event** (E) | Fire an event by its signal name, with optional input |
 | **Translator** (T) | Turn the live translator on, off or toggle it |
@@ -114,10 +114,6 @@ a Stream Deck on a different PC needs a tunnel.
 | Overlay | Play overlay by name |
 | Browser Overlay | ON · OFF · Toggle · Reload · Clickable · Click-through · Load URL by name or directly |
 | Photo Mode | Start · Join · Stop · Snap · Next/prev background · Stop timer · Select · Skip · Finish |
-| Advanced | Set script global · Ping · Raw JSON |
-
-**Raw JSON** sends whatever you type straight to the server, so new ASTO-BOT
-commands can be used before the plugin knows about them.
 
 ---
 
