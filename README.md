@@ -1,7 +1,7 @@
 <div align="center">
   
 <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-blue?style=flat-square" alt="Platform"/>
-<a href="../../releases"><img src="https://img.shields.io/badge/Version-1.0.44-green?style=flat-square" alt="Version"/></a>
+<a href="../../releases"><img src="https://img.shields.io/badge/Version-1.0.45-green?style=flat-square" alt="Version"/></a>
 <a href="https://discord.gg/n2nstVwspk"><img src="https://img.shields.io/badge/Discord-Join-7289DA?style=flat-square&logo=discord&logoColor=white" alt="Discord"/></a>
 <a href="https://ko-fi.com/captainapolloo"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white" alt="Ko-fi"/></a>
 
@@ -25,12 +25,15 @@
 - **ASTOSCRIPT** — built-in scripting language with variables, conditions, loops, lists, file access, HTTP requests and OBS control, plus a live debugger and an AI prompt generator
 - **Visual Overlay Editor** — build animated overlays (images + text) for OBS Browser Source or Window Capture, with per-step sounds and multiple timelines
 - **Browser Overlay** — a transparent, click-through desktop window for web-based overlays, controlled live via script, event or WebSocket
+- **Live Translator** — speech recognition running locally on your PC: turn what you say into live subtitles, or translate it into any of 33 languages, and send it to OBS text, Twitch chat or a subtitle page. With the same source and target language no AI is used at all — that mode works completely offline
+- **Voice AI** — hold a key, speak, release: talk to your bot on stream and let it answer in chat, read it aloud through Speaker.bot, or both
+- **Voice Command** — trigger any event by saying a sentence. Runs entirely on your machine — no AI provider, no tokens, nothing leaves your computer
 - **Clip Manager** — browse, label and play Twitch clips via clip lists, playlist or chat command
 - **Giveaway & Points System** — viewers earn custom points over time and spend them to enter giveaways (ticket draw or highest-bid mode)
 - **Photo Mode** — live group photo sessions where viewers join via chat command and appear on stream
 - **Moderation & Chat Modes** — ban, timeout, VIP, warnings, shield mode, followers-only, emote-only, sub-only, slow and unique chat, all as event actions
 - **Now Playing** — reads what is playing in Spotify, Apple Music or a browser and controls the player from an event
-- **Stream Deck & WebSocket** — trigger events, scripts, overlays, clips, the browser overlay and photo mode from any external tool on port 2519
+- **Stream Deck & WebSocket** — trigger events, scripts, overlays, clips, the browser overlay, photo mode, the translator and push-to-talk from any external tool on port 2519
 - **Channel Point Rewards** — create, edit and link rewards directly from ASTO-BOT (required for refund support)
 - **Chat Commands** — configurable commands with permission levels, cooldowns and group management
 
@@ -104,7 +107,8 @@ Viewers join a group photo by chat command and appear on stream together — wit
 
 - Windows 10 or Windows 11 (64-bit)
 - Internet connection (for Twitch authentication and AI features)
-- An API key from an AI provider (Google Gemini or OpenAI) — *only needed for the AI features*
+- An API key from an AI provider (Google Gemini or OpenAI) — *only needed for the AI features. Subtitles in the language you already speak, and voice commands, work without one*
+- A speech model, downloaded from inside the app in one click (148 MB – 1.5 GB) — *only needed for the Live Translator and Voice*
 - OBS Studio 28 or later *(optional, for overlay and scene automation)*
 
 -----
@@ -177,6 +181,31 @@ ASTO-BOT listens on `ws://127.0.0.1:2519` (local only — not reachable from the
 { "event": "greeting" }
 { "event": "shoutout", "input": "username" }
 
+// Dashboard pages
+{ "dashboard": 1 }                           // 1 – 4
+{ "dashboard": "next" }
+{ "dashboard": "prev" }
+
+// Live Translator
+{ "translator": "on" }
+{ "translator": "off" }
+{ "translator": "toggle" }                   // one key is enough
+
+// Where the translation goes
+{ "output": "subtitles", "action": "on" }    // on | off | toggle
+{ "output": "gdi", "action": "toggle" }      // OBS text source
+{ "output": "chat", "action": "toggle" }     // Twitch chat
+
+// Subtitle window
+{ "subtitles": "on" }                        // on | off | toggle
+{ "model": "release" }                       // free the speech model from RAM
+
+// Voice — push to talk (send on key DOWN and key UP)
+{ "ptt": "start" }                           // talk to the AI
+{ "ptt": "stop" }
+{ "ptt": "start", "mode": "command" }        // say a voice command instead
+{ "ptt": "stop", "mode": "command" }
+
 // Clips
 { "playlist": "start" }
 { "playlist": "stop" }
@@ -226,6 +255,16 @@ ASTO-BOT listens on `ws://127.0.0.1:2519` (local only — not reachable from the
 
 Every message is answered exactly once and in order — `{ "ok": true }` when it was accepted, or `{ "ok": false, "error": "…" }` with a reason when it was not.
 
+ASTO-BOT also sends messages **on its own** when something changes, so a Stream Deck key can show the real state instead of guessing:
+
+```json
+{ "translator": "on" }                       // also fires on auto-off
+{ "ptt": "recording", "mode": "ai" }         // mode: ai | cmd
+{ "ptt": "idle", "mode": "ai" }
+```
+
+Listen for these rather than tracking the state yourself — push-to-talk stops on its own after 30 seconds, and the translator has an auto-off timer.
+
 > For events, use the **signal name** (shown under the event name), not the display name or the chat trigger. Upper/lower case does not matter, and events without a trigger work fine. For everything else, the **name** is used.
 
 The port can be changed under **Settings → Websocket**, where this list is also available with click-to-copy.
@@ -258,5 +297,5 @@ If you enjoy ASTO-BOT and want to support the development: **[ko-fi.com/captaina
 -----
 
 <div align="center">
-<sub>Developed by CaptainApolloo · Version 1.0.44 · 2026 · All rights reserved</sub>
+<sub>Developed by CaptainApolloo · Version 1.0.45 · 2026 · All rights reserved</sub>
 </div>
