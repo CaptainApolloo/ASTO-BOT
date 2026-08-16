@@ -1,9 +1,10 @@
 # ASTO-BOT — Stream Deck Plugin
 
 Control ASTO-BOT from your Elgato Stream Deck: run scripts, trigger events,
-control clips, queues, overlays, the browser overlay and photo mode.
+control clips, queues, overlays, the browser overlay, the chat overlay and
+photo mode.
 
-57 commands, six actions, one WebSocket connection.
+60 commands, seven actions, one WebSocket connection.
 
 ---
 
@@ -34,20 +35,26 @@ any further configuration.
 
 ---
 
-## The four actions
+## The seven actions
 
 | Action | What it does |
 |---|---|
-| **Command** (C) | All 57 commands in one key, picked from a grouped dropdown |
+| **Command** (C) | All 60 commands in one key, picked from a grouped dropdown |
 | **Run Script** (S) | Start a script by name |
 | **Trigger Event** (E) | Fire an event by its signal name, with optional input |
 | **Translator** (T) | Turn the live translator on, off or toggle it |
+| **Chat Overlay** (💬) | Show or hide the chat overlay ASTO-BOT serves to OBS |
 | **Push to Talk** (P) | Hold the key to talk — voice input runs while it is held |
 | **Reconnect** | Reconnect to ASTO-BOT immediately, or ping to confirm it works |
 
 **Command** alone covers everything. The others exist as shortcuts for the most
-common cases and carry a small letter in the corner so they are easy to tell
-apart on the deck.
+common cases and carry a small marker in the corner so they are easy to tell
+apart on the deck — a letter for most, a speech bubble for the chat overlay.
+
+**Chat Overlay** turning off does two things at once: no new messages are sent
+*and* the lines already on screen are cleared. Stopping only the flow would
+leave the chat standing there, which rather defeats the point of an off
+switch.
 
 **Push to Talk** is a real hold-to-talk key: recording starts when you press it
 down and stops the moment you let go, so an accidental tap cannot leave your
@@ -83,6 +90,10 @@ ASTO-BOT versions that do not support the lookup yet — the list simply reads
 *not available*.
 
 > Dropdowns require ASTO-BOT **v1.0.42** or newer.
+>
+> The **Chat Overlay** commands need an ASTO-BOT build that has the chat
+> overlay — you have it if *Overlay → 💬 Chat* exists in the app. On older
+> versions the key still sends, but nothing happens on the other end.
 
 ---
 
@@ -113,6 +124,7 @@ a Stream Deck on a different PC needs a tunnel.
 | Queues | Play · Stop · Reset (one queue or all) |
 | Overlay | Play overlay by name |
 | Browser Overlay | ON · OFF · Toggle · Reload · Clickable · Click-through · Load URL by name or directly |
+| Chat Overlay | ON · OFF · Toggle |
 | Photo Mode | Start · Join · Stop · Snap · Next/prev background · Stop timer · Select · Skip · Finish |
 
 ---
@@ -125,6 +137,7 @@ a Stream Deck on a different PC needs a tunnel.
 | All keys stay grey | Websocket off in ASTO-BOT, or the port does not match |
 | One key shows ⚠ | Required field empty, or the name does not exist in ASTO-BOT |
 | Dropdowns stay empty | ASTO-BOT closed, or a version older than v1.0.42 |
+| Chat overlay key does nothing | ASTO-BOT has no chat overlay yet, or the overlay is not set up in OBS as a browser source |
 
 The plugin writes messages prefixed `[ASTO-BOT]` to the Stream Deck logs in
 `%APPDATA%\Elgato\StreamDeck\logs\`.

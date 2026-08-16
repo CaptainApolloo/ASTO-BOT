@@ -204,6 +204,10 @@ function payloadForAction(action, settings) {
     const mode = (s.mode || 'toggle').trim();
     return { translator: mode };
   }
+  if (action.endsWith('.chatoverlay')) {
+    const mode = (s.mode || 'toggle').trim();
+    return { chatoverlay: mode };
+  }
   // Push-to-Talk wird nicht hier gebaut — der Wert hängt davon ab, ob die
   // Taste gerade gedrückt oder losgelassen wurde. Siehe pttPayload().
   if (action.endsWith('.ptt')) {

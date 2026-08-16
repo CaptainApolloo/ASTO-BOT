@@ -78,6 +78,13 @@ const ASTO_COMMANDS = [
     build: (a) => ({ browser: 'url', url: a.url })
   },
 
+  // ── Chat overlay ──────────────────────────────────────────────────────
+  // Schluessel ist 'chatoverlay', NICHT 'chat': letzteres ist bei
+  // {output:'chat'} schon der Twitch-Chat als Uebersetzer-Ausgang.
+  { id: 'chatovl_on',     group: 'Chat Overlay', label: 'Chat overlay: ON',     build: () => ({ chatoverlay: 'on' }) },
+  { id: 'chatovl_off',    group: 'Chat Overlay', label: 'Chat overlay: OFF',    build: () => ({ chatoverlay: 'off' }) },
+  { id: 'chatovl_toggle', group: 'Chat Overlay', label: 'Chat overlay: toggle', build: () => ({ chatoverlay: 'toggle' }) },
+
   // ── Photo mode ────────────────────────────────────────────────────────
   {
     id: 'photo_start',

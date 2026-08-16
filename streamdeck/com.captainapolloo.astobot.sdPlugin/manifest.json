@@ -106,6 +106,27 @@
       ]
     },
     {
+      "UUID": "com.captainapolloo.astobot.chatoverlay",
+      "Name": "Chat Overlay",
+      "Icon": "icons/chat",
+      "Tooltip": "Turn the chat overlay on, off or toggle it.",
+      "PropertyInspectorPath": "pi/chatoverlay.html",
+      "Controllers": [
+        "Keypad"
+      ],
+      "DisableAutomaticStates": true,
+      "States": [
+        {
+          "Image": "icons/chat_key_off",
+          "TitleAlignment": "bottom"
+        },
+        {
+          "Image": "icons/chat_key",
+          "TitleAlignment": "bottom"
+        }
+      ]
+    },
+    {
       "UUID": "com.captainapolloo.astobot.ptt",
       "Name": "Push to Talk",
       "Icon": "icons/ptt",
