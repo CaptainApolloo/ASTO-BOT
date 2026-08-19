@@ -6,14 +6,17 @@ photo mode.
 
 60 commands, seven actions, one WebSocket connection.
 
+[Get it on Elgato Marketplace](https://marketplace.elgato.com/product/asto-bot-2db69caf-ee1e-4520-8375-ae8a6a8dbd67) · [ASTO-BOT](https://github.com/CaptainApolloo/ASTO-BOT)
+
 ---
 
 ## Install
 
 **From Elgato Marketplace (recommended)**
 
-Search for *ASTO-BOT* in the Stream Deck app or on
-[Elgato Marketplace](https://marketplace.elgato.com). One click, updates included.
+[**ASTO-BOT on Elgato Marketplace**](https://marketplace.elgato.com/product/asto-bot-2db69caf-ee1e-4520-8375-ae8a6a8dbd67)
+— one click, updates included. You can also search for *ASTO-BOT* under
+**More Actions** in the Stream Deck app.
 
 **Manually**
 

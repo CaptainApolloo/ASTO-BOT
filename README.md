@@ -2,6 +2,7 @@
   
 <img src="https://img.shields.io/badge/Platform-Windows%2010%20%2F%2011-blue?style=flat-square" alt="Platform"/>
 <a href="../../releases"><img src="https://img.shields.io/badge/Version-1.1.05-green?style=flat-square" alt="Version"/></a>
+<a href="https://marketplace.elgato.com/product/asto-bot-2db69caf-ee1e-4520-8375-ae8a6a8dbd67"><img src="https://img.shields.io/badge/Stream%20Deck-Plugin-101820?style=flat-square" alt="Stream Deck Plugin"/></a>
 <a href="https://discord.gg/n2nstVwspk"><img src="https://img.shields.io/badge/Discord-Join-7289DA?style=flat-square&logo=discord&logoColor=white" alt="Discord"/></a>
 <a href="https://ko-fi.com/captainapolloo"><img src="https://img.shields.io/badge/Ko--fi-Support-FF5E5B?style=flat-square&logo=kofi&logoColor=white" alt="Ko-fi"/></a>
 
@@ -11,7 +12,7 @@
 
 **ASTO-BOT** is an all-in-one Twitch stream management tool for Windows. It connects directly to Twitch, OBS Studio, and AI services, letting you automate your stream without writing a single line of code — but also giving you a full scripting language if you want to go further.
 
-[Download](#installation) · [Discord](https://discord.gg/n2nstVwspk) · [Support on Ko-fi](https://ko-fi.com/captainapolloo) · [User Manual 🇬🇧](ASTO-BOT_User_Manual.pdf) · [Benutzerhandbuch 🇩🇪](ASTO-BOT_Benutzerhandbuch.pdf)
+[Download](#installation) · [Stream Deck Plugin](https://marketplace.elgato.com/product/asto-bot-2db69caf-ee1e-4520-8375-ae8a6a8dbd67) · [Discord](https://discord.gg/n2nstVwspk) · [Support on Ko-fi](https://ko-fi.com/captainapolloo) · [User Manual 🇬🇧](ASTO-BOT_User_Manual.pdf) · [Benutzerhandbuch 🇩🇪](ASTO-BOT_Benutzerhandbuch.pdf)
 
 </div>
 
@@ -33,7 +34,7 @@
 - **Photo Mode** — live group photo sessions where viewers join via chat command and appear on stream
 - **Moderation & Chat Modes** — ban, timeout, VIP, warnings, shield mode, followers-only, emote-only, sub-only, slow and unique chat, all as event actions
 - **Now Playing** — reads what is playing in Spotify, Apple Music or a browser and controls the player from an event
-- **Stream Deck & WebSocket** — trigger events, scripts, overlays, clips, the browser overlay, photo mode, the translator and push-to-talk from any external tool on port 2519
+- **Stream Deck & WebSocket** — trigger events, scripts, overlays, clips, the browser overlay, photo mode, the translator and push-to-talk from any external tool on port 2519, or with the [official Stream Deck plugin](https://marketplace.elgato.com/product/asto-bot-2db69caf-ee1e-4520-8375-ae8a6a8dbd67) — no JSON to type, names come straight from a drop-down
 - **Channel Point Rewards** — create, edit and link rewards directly from ASTO-BOT (required for refund support)
 - **Chat Commands** — configurable commands with permission levels, cooldowns and group management
 
@@ -173,7 +174,24 @@ The **complete command reference** lives in the built-in tutorial: **Scripts →
 
 ## WebSocket Integration
 
-ASTO-BOT listens on `ws://127.0.0.1:2519` (local only — not reachable from the network). Send JSON to control it from any tool, including the Elgato Stream Deck (*Web Requests* plugin):
+### Stream Deck
+
+The easiest way in is the **[official ASTO-BOT plugin](https://marketplace.elgato.com/product/asto-bot-2db69caf-ee1e-4520-8375-ae8a6a8dbd67)** on the Elgato Marketplace — or search for *ASTO-BOT* under **More Actions** in the Stream Deck software. It ships six actions and needs no JSON at all:
+
+|Action           |What it does                                                        |
+|-----------------|--------------------------------------------------------------------|
+|**Command**      |Sends any of the commands below — everything else is a shortcut for it|
+|**Run Script**   |Runs a script, picked from a drop-down filled live from ASTO-BOT     |
+|**Trigger Event**|Fires an event, also from a drop-down — no signal names to look up   |
+|**Translator**   |Starts and stops the Live Translator                                 |
+|**Push to Talk** |Records while held, sends on release                                 |
+|**Reconnect**    |Rebuilds the connection if it ever drops                             |
+
+Every key shares one connection and reconnects on its own after an ASTO-BOT restart.
+
+### Raw commands
+
+ASTO-BOT listens on `ws://127.0.0.1:2519` (local only — not reachable from the network). Send JSON to control it from any tool:
 
 ```json
 // Scripts & Events
